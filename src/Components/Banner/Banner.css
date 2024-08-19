@@ -1,0 +1,11 @@
+.flex.flex-col.gap-4 {
+    font-size: 6vh;
+    color: white;
+    font-family: sans-serif;
+    font-style: oblique;
+}
+
+.font-medium.text-white.text-center {
+    font-size: 2.5vh;
+    color: rgb(210, 195, 195);
+}
