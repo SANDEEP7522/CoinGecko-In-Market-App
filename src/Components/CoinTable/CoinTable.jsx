@@ -3,14 +3,14 @@ import { useQuery } from "react-query";
 import { FetchCoinData } from "../Serviecs/FetchCoinData";
 
 
-function CoinTable() { 
+function CoinTable( {currency}) { 
   const [page, setPage] = useState(1);
   const {data, isLoading, isError,error }  = useQuery(['coins', page],
-    () => FetchCoinData(page, 'usd'), {
+    () => FetchCoinData(page, currency), {
     // retry: 2,
     // retryDelay: 1000,
-    cacheTime: 1000 * 60 * 2,
-    staleTime: 1000 * 60 * 2
+    // cacheTime: 1000 * 60 * 2,
+    // staleTime: 1000 * 60 * 2,
     
   });
   
@@ -27,11 +27,10 @@ function CoinTable() {
   
 
       return (
-        // <>
-        //   Coin Table <button onClick={() => setPage(page+1)}>click</button>
-        // </>
+        
         <div className="my-5 flex flex-col items-center 
             justify-center gap-5 w-[80vm] mx-auto">
+              {currency}
           {/* for header part of coins */}
           <div className="w-full h-10 bg-yellow-400 text-black flex gap-1 font-semibold items-center justify-center">
 

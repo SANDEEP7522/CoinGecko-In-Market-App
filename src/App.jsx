@@ -8,11 +8,14 @@ import Banner from './Components/Banner/Banner';
 function App() {
   const [count, setCount] = useState(0)
 
+  const [currency, setCurrency] = useState('usd');
+
   return (
     <>
-    <NavBar />
+    {currency}
+    <NavBar setCurrency ={setCurrency} />
     <Banner />
-    <CoinTable />
+    <CoinTable currency ={currency} />
     
     </>
   )
