@@ -1,58 +1,33 @@
-// import React, { Component } from 'react'
-
-// import { useEffect, useState } from "react";
-// function CoinTable() {
- 
-//   const [count, setCount] = useState(0);
-
-//   const [flag, setflag] = useState(false);
-
-//     async function downlode() {
-//         const responce = await fetch ("https://jsonplaceholder.typicode.com/todos/2") 
-//         console.log(responce);
-//         const result = await responce.joson;
-//         console.log(result);
-            
-//     }
-
-//  useEffect(() => {
-//     downlode();
-//  },[count]);
-
-//  useEffect(() => {
-//     console.log("Flag is change");
-//  },[flag]);
-
-//  useEffect(() => {
-//     console.log("Flage is not Change");  
-//  },);
-
-//  useEffect(() => {
-//     console.log("flage is change & !change ");
-    
-//  },[count, flag]);
-
-
-//     return (
-//       <>
-//         <h1>coin</h1>
-//         {count}
-//         <br />
-//         <button onClick={() => setCount(count +1)}>Increment</button>
-//         <br />
-//         {flag && <div>flag is true</div> }
-//         <br />
-//         <button onClick={() => setflag(!flag)}>Toggle</button>
-//       </>
-//     );
-//  }
+import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
+import { FetchCoinData } from "../Serviecs/FetchCoinData";
 
 
 function CoinTable() { 
+  const [page, setPage] = useState(1);
+  const {data, isLoading, isError,error }  = useQuery(['coins', page],
+    () => FetchCoinData(page, 'usd'), {
+    retry: 2,
+    retryDelay: 1000,
+    cacheTime: 1000 * 60 * 2,
+    
+  });
   
+  useEffect(()=>{
+    console.log(data);
+  }, [data]);
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+  if (isError) {
+    return <div>Error: {error.message}</div>
+  }
+  
+
       return (
         <>
-          <h1>Coin</h1>
+          Coin Table <button onClick={() => setPage(page +1)}>click</button>
         </>
       );
    }

@@ -1,9 +1,14 @@
 import AxiosIncetance from "../../Helpers/AxiosIncetance";
 
-export async function FetchCoinData() {
+
+export async function FetchCoinData(page=1, currency='usd') {
+
+    const perpage = 10; 
+
+
     
     try{
-        const responce = await AxiosIncetance.get("/coins/markets?vs_currency=usd");
+        const responce = await AxiosIncetance.get(`/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=${perpage}&page=${page} `);
 
         console.log(responce);
         return responce;
@@ -17,3 +22,8 @@ export async function FetchCoinData() {
     }
 
 }
+
+
+export default FetchCoinData;
+
+
