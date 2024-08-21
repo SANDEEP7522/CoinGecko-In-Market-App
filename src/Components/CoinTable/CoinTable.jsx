@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { FetchCoinData } from "../Serviecs/FetchCoinData";
+import { CurrencyContext } from "../Context/CurrencyContext";
 
 
-function CoinTable( {currency}) { 
+function CoinTable() { 
+    
+  const {currency} =  useContext(CurrencyContext);
+   
   const [page, setPage] = useState(1);
   const {data, isLoading, isError,error }  = useQuery(['coins', page],
     () => FetchCoinData(page, currency), {
