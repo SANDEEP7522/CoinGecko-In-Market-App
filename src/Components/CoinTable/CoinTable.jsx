@@ -1,13 +1,13 @@
 import {useState } from "react";
 import { useQuery } from "react-query";
 import { FetchCoinData } from "../Serviecs/FetchCoinData";
-// import { CurrencyContext } from "../Context/CurrencyContext";
 import currencyStore from '../Store/Store';
+import { useNavigate } from "react-router-dom";
 
 function CoinTable() { 
     
+  const navigate = useNavigate();
   const {currency} =  currencyStore();
-   
   const [page, setPage] = useState(1);
   const {data, isLoading, isError,error }  = useQuery(['coins', page],
     () => FetchCoinData(page, currency), {
@@ -17,26 +17,22 @@ function CoinTable() {
     staleTime: 1000 * 60 * 2,
     
   });
-  
-  // useEffect(()=>{
-  //   console.log(data);
-  // }, [data]);
+ 
+  function handleCoinRedirect(id){
+        navigate(`/details/${id}`);
+  }
 
-  // if (isLoading) {
-  //   return <div>Loading...</div>
-  // }
   if (isError) {
     return <div>Error: {error.message}</div>
   }
   
-
-      return (
+ return (
         
-        <div className="my-5 flex flex-col items-center 
-            justify-center gap-5 w-[80vm] mx-auto">
+   <div  className="my-5 flex flex-col items-center justify-center gap-5 w-[80vm] mx-auto">
               {currency}
           {/* for header part of coins */}
-          <div className="w-full h-10 bg-yellow-400 text-black flex gap-1 font-semibold items-center justify-center">
+          <div className="w-full h-10 bg-yellow-400 text-black 
+          flex py-4 px-2 font-semibold items-center justify-center">
 
             <div className="basis-[35%]">
               Coin
@@ -57,19 +53,16 @@ function CoinTable() {
              24h-percentage
             </div>  
 
-            
           </div>
-
-
 
 
           <div className=" flex flex-col w-[80vw] mx-auto">
             {isLoading && <div className=" font-bold  ">Loding.........</div>}
             {data && data.map((coin) => { 
             return(
-                  <div className="w-full bg-transparent text-white flex py-4 px-1 font-semibold items-center justify-start">
+                  <div onClick={() => handleCoinRedirect(coin.Id)} className="w-full bg-transparent text-white flex py-4 px-2 font-semibold items-center justify-between cursor-pointer">
 
-                    <div className="flex items-center justify-start gap-10
+                    <div className="flex items-center justify-start gap-3
                     basis-[35%] ">
                          
                       <div className=" w-[5rem] h-[5rem] ">
@@ -85,21 +78,21 @@ function CoinTable() {
                         </div>
                       </div>
  
-
-                      <div className="">
+                  
+                         <div >
                         {coin.high_24h}
-                      </div>
-                      <div className="basis-[-50%]">
-                        {coin.price_change_24h}
-                      </div> 
-                      <div className="basis-[-10%]">
-                        {coin.market_cap
-                        }
-                      </div> 
-                      <div className="basis-[-10%]">
+                         </div>
+                         <div >
+                          {coin.price_change_24h}
+                         </div> 
+                        <div>
+                        {coin.market_cap }
+                       
+                        </div> 
+                         <div>
                         {coin.price_change_percentage_24h}
-                      </div>
-
+                         </div>
+                     
 
 
                     </div>
