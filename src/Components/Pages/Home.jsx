@@ -1,12 +1,12 @@
 import Banner from "../Banner/Banner";
 import CoinTable from "../CoinTable/CoinTable";
-import NavBar from "../NavBar/NavBar";
+// import NavBar from "../NavBar/NavBar";
 
 
 function Home(){
    return(
     <>
-    <NavBar />
+     {/* <NavBar />  */}
     <Banner />
     <CoinTable />
     </>
