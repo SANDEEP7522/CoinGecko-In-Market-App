@@ -1,12 +1,12 @@
 import AxiosIncetance from "../../Helpers/AxiosIncetance";
 
 
-export async function FetchCoinDetail(id) {
+export async function FetchCoinDetails(id) {
 
  try{
-     const responce = await AxiosIncetance.get(`/coins/${id} `);
+     const responce = await AxiosIncetance.get(`/coins/${id}`);
 
-        // console.log(responce);
+        console.log(responce);
         return responce.data;
     }
   catch(error){
@@ -15,6 +15,6 @@ export async function FetchCoinDetail(id) {
     }
 
 }
-export default FetchCoinDetail;
+export default FetchCoinDetails;
 
 
