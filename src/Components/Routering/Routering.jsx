@@ -5,6 +5,7 @@ import Layout from "../Pages/Layout";
 import { lazy, Suspense } from 'react';
  import SingleCoinPageLoder from '../Loders/SingleCoinPageLoder';
  import MultiCoinPageLoder from '../Loders/MultiCoinPageLoder';
+import CustomErrorBoundry from "../ErrorBoundry/ErrorBoundry";
 
 
 
@@ -15,8 +16,8 @@ const CoinDetailsPage = lazy(() => import('../Pages/CoinDetailsPage'));
 
 function Routering(){
   return(
-
-    <Routes>
+    <CustomErrorBoundry>
+       <Routes>
       <Route path="/" element={<Layout />}> 
          <Route index element= {
           <Suspense fallback={<MultiCoinPageLoder/>}>
@@ -35,6 +36,8 @@ function Routering(){
             
        </Route>
     </Routes>
+    </CustomErrorBoundry>
+   
 
   )
 

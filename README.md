@@ -14,3 +14,5 @@ useint this API (https://docs.coingecko.com/reference/introduction)
 DaisyUI Tailwind CSS plugin (https://daisyui.com/docs/install/)
 
 Skeleton  React-Content-loger   (https://www.npmjs.com/package/react-content-loader)
+
+Error boundry  (https://www.npmjs.com/package/react-error-boundary)
