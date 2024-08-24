@@ -3,6 +3,7 @@ import { useQuery } from "react-query";
 import { FetchCoinData } from "../Serviecs/FetchCoinData";
 import currencyStore from '../Store/Store';
 import { useNavigate } from "react-router-dom";
+import MultiCoinPageLoder from '../Loders/MultiCoinPageLoder';
 
 function CoinTable() { 
     
@@ -26,7 +27,9 @@ function CoinTable() {
   if (isError) {
     return <div>Error: {error.message}</div>
   }
-  
+  if(isLoading){
+    return <MultiCoinPageLoder />;
+  }
  return (
         
    <div  className="my-5 flex flex-col items-center justify-center gap-5 w-[80vm] mx-auto">
@@ -66,8 +69,8 @@ function CoinTable() {
                     <div className="flex items-center justify-start gap-3
                     basis-[35%] ">
                          
-                      <div className=" w-[5rem] h-[5rem] ">
-                          <img src={coin.image} alt="" className=" w-full h-full " />
+                      <div  className=" w-[5rem] h-[5rem] ">
+                          <img src={coin.image} alt="" className=" w-full h-full " loading="lazy"/>
                       </div>
 
                       <div className=" flex flex-col ">

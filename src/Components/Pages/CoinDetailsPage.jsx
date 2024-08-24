@@ -3,13 +3,14 @@ import { useParams } from "react-router-dom";
 import { FetchCoinDetails } from "../Serviecs/FetchCoinDetails";
 import parse from 'html-react-parser';
 import currencyStore from "../Store/Store";
+import MultiCoinPageLoder from '../Loders/MultiCoinPageLoder';
 
 function CoinDetailsPage(){
 
     const {coinId} = useParams();     
 //    console.log(coinId);
     const {currency} = currencyStore();
-   console.log(currency);
+//    console.log(currency);
    
    
     const {isError, isLoading, data: coin} = useQuery(["coin", coinId], () => FetchCoinDetails(coinId), {
@@ -23,7 +24,7 @@ function CoinDetailsPage(){
     // },[coin]);
 
     if (isLoading) {
-        return <div>Loading.........</div>
+        return <MultiCoinPageLoder/>
     }
     if (isError) {
         return <div>Error: Something Wents Wrong </div>
