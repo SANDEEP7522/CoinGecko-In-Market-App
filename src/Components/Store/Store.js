@@ -2,12 +2,12 @@ import {create} from 'zustand';
 import { CurrencyContext } from '../Context/CurrencyContext';
 
 const store = create((set) => ({
-     Currency: 'usd',
+     currency: 'usd',
      setCurrency: (newCurrency) => set ((state) => {
     
     return{
         ...state,
-        Currency: newCurrency,
+        currency: newCurrency,
     }
   })
 }));
