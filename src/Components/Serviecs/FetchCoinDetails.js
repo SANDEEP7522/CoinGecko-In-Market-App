@@ -7,7 +7,7 @@ export async function FetchCoinDetails(id) {
  try{
      const responce = await AxiosIncetance.get(`/coins/${id}`);
      
-        console.log(responce);
+        // console.log(responce);
         return responce.data;
     }
   catch(error){

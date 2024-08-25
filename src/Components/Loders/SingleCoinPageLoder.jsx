@@ -3,24 +3,21 @@ import ContentLoader from 'react-content-loader'
 
 const SingleCoinPageLoder = props => {
   return (
-    <ContentLoader
-      height={500}
-      width={450}
-      viewBox="0 0 450 300"
-      backgroundColor="#f5f5f5"
-      foregroundColor="#dbdbdb"
-      {...props}
-    >
-      <circle cx="120" cy="120" r="100" />
-      
-     
+   
+      <ContentLoader
+        height={200}
+        speed={1}
+        backgroundColor={'#555'}
+        foregroundColor={'#999'}
+        viewBox="0 0 380 70"
+      >
+       
+        <rect x="0" y="0" rx="5" ry="5" width="70" height="70" />
+        <rect x="80" y="17" rx="4" ry="4" width="300" height="13" />
+        <rect x="80" y="40" rx="3" ry="3" width="250" height="10" />
+      </ContentLoader>
+    )
 
-      <rect x="315" y="15" rx="3" ry="3" width="150" height="15" />
-      <rect x="370" y="15" rx="3" ry="3" width="50" height="15" />
-      <rect x="425" y="15" rx="3" ry="3" width="50" height="15" />
-
-    </ContentLoader>
-  )
 }
 
 SingleCoinPageLoder.metadata = {

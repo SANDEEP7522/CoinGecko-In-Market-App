@@ -5,7 +5,7 @@ import Layout from "../Pages/Layout";
 import { lazy, Suspense } from 'react';
  import SingleCoinPageLoder from '../Loders/SingleCoinPageLoder';
  import MultiCoinPageLoder from '../Loders/MultiCoinPageLoder';
-import CustomErrorBoundry from "../ErrorBoundry/ErrorBoundry";
+import CustomErrorBoundry from "../ErrorBoundry/ErrorBoundryUI";
 
 
 
@@ -33,6 +33,8 @@ function Routering(){
               <CoinDetailsPage />
           </Suspense>
         } />
+
+        
             
        </Route>
     </Routes>

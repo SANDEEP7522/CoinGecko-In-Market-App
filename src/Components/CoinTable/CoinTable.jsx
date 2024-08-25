@@ -3,12 +3,14 @@ import { useQuery } from "react-query";
 import { FetchCoinData } from "../Serviecs/FetchCoinData";
 import currencyStore from '../Store/Store';
 import { useNavigate } from "react-router-dom";
-import MultiCoinPageLoder from '../Loders/MultiCoinPageLoder';
+import MultiMorePage from '../Loders/MultiMorePage';
+
 
 function CoinTable() { 
-    
-  const navigate = useNavigate();
+  
   const {currency} =  currencyStore();
+  
+  const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const {data, isLoading, isError,error }  = useQuery(['coins', page],
     () => FetchCoinData(page, currency), {
@@ -28,7 +30,7 @@ function CoinTable() {
     return <div>Error: {error.message}</div>
   }
   if(isLoading){
-    return <MultiCoinPageLoder />;
+    return <MultiMorePage/>;
   }
  return (
         

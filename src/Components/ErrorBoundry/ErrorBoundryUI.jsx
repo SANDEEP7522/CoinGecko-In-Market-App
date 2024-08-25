@@ -5,10 +5,10 @@ function CustomErrorBoundryUI ({error, resetErrorBoundry}){
     return(  
 
 
-    <div className="flex items-center justify-center h-[100rem]">
+    <div className="flex items-center justify-center h-[100vh] px-5">
          <div role="alert" className="alert alert-error">
             <p>Something wents wrong</p>
-              <pre>{error?.message}</pre>
+              {/* <pre>{error?.message}</pre> */}
             <button onClick={resetErrorBoundry}>Try Again</button>
          </div>
  

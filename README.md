@@ -16,3 +16,10 @@ DaisyUI Tailwind CSS plugin (https://daisyui.com/docs/install/)
 Skeleton  React-Content-loger   (https://www.npmjs.com/package/react-content-loader)
 
 Error boundry  (https://www.npmjs.com/package/react-error-boundary)
+
+React-chartjs-2 Library  (npm i react-chartjs-2)
+
+Useing-chart-js-react  (https://blog.logrocket.com/using-chart-js-react/),
+                       (npm install chart.js)
+
+
