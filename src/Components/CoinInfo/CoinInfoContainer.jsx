@@ -17,10 +17,13 @@ function CoinInfoContainer(coinId){
    
 const [interval, setCoinInterval] = useState('daily');
 
-  const {data: historicData, isLoading, isError} = useQuery(['coinHistoricalData', coinId, currency, days, interval], () => FetchCoinHistoricData(coinId, currency, days, interval), {
-    cacheTime: 1000 * 60 * 2,
-    staleTime: 1000 * 60 * 2,
-  });
+
+
+  const { data: historicData, isLoading, isError } = useQuery(['coinHistoricData', coinId, currency, days, interval], () => FetchCoinHistoricData(coinId, interval, days, currency), {
+     cacheTime: 1000 * 60 * 2,
+     staleTime: 1000 * 60 * 2,
+});
+
   if (isLoading) {
     return <MultiCoinPageLoder />
   }
